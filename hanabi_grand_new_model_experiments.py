@@ -208,7 +208,6 @@ def play_one_game (q_net_small=None, q_net_big=None, verbose=False, EPSILON=1):
             # get utilities of intentions
             # (though i still don't know what to input for P and how to get U("keep"))
             # what if an action is invalid? --- ignore for now but keep in mind
-            # wait ... do we need utilities for all players?
             # confused as to what utilities are for players if it's not their turn
 
             # s = np.zeros((5, inp_size_small))
