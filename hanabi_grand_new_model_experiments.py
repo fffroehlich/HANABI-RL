@@ -195,7 +195,7 @@ def play_one_game (q_net_small=None, q_net_big=None, verbose=False, EPSILON=1):
             # print ("U", U)
 
             U = U.reshape((20, 3))
-            U *= P1 # prior
+            U *= P1 # prior; should be different for every player but atm doesn't make a difference
 
             U /= np.sum(U, axis=-1)[:, np.newaxis]
 
@@ -380,6 +380,9 @@ def sample_board_state (probs, stack, discarded):
 
     # given deck probs, gives random sample
     # need stack + discard pile to know which cards are available
+    
+    # this method might result in overall unlikely board states
+    # viterbi or something
 
     n_available = np.zeros((N_SUITS*5,))
 
