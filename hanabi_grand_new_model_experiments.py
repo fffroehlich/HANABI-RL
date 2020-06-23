@@ -226,9 +226,10 @@ def play_one_game (q_net_small=None, q_net_big=None, verbose=False, EPSILON=1):
             # q_play = q[:, :4].reshape((1, -1))
             # q_disc = q[:, 4:].reshape((1, -1))
             # q_keep = np.ones_like(q_play) - q_play - q_disc # dubious
+            # q_keep /= N_ACTIONS - 8
             #
             # q = np.concatenate([q_play, q_disc, q_keep], axis=0)
-            #
+            # q /= np.sum(q, axis=0)[np.newaxis, :]
             # print ("q", q)
 
             # + + + + + + + + + + + + + + + + + + + + + + + + + + + #
