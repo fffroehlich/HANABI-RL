@@ -494,6 +494,9 @@ def encode_state_big (player, stack, discarded, n_inf_tokens, n_fuse_tokens, dec
     decks = decks2vec(decks)
     dk = decks[4*player:4*(player+1)] # true deck
     decks = np.concatenate([decks[:4*player], decks[4*(player+1):]])
+    
+    # with own deck, replace:
+    # decks = np.concatenate([dk, decks[:4*player], decks[4*(player+1):]])
 
     stack = stack2vec(stack)
     discarded = discarded2vec(discarded)
@@ -513,6 +516,8 @@ def encode_states_big (S):
 
 inp_size_small = N_SUITS * 10 * (N_SUITS + 5) + (N_SUITS * 5 * (N_SUITS + 5)) + 8 + 3 + 60
 inp_size_big = N_SUITS * 10 * (N_SUITS + 5) + (N_SUITS * 5 * (N_SUITS + 5)) + 8 + 3 + 60 + 16 * 5 * N_SUITS
+# with own deck:
+# inp_size_big = N_SUITS * 10 * (N_SUITS + 5) + (N_SUITS * 5 * (N_SUITS + 5)) + 8 + 3 + 60 + 20 * 5 * N_SUITS
 
 ######################################################################
 
@@ -549,7 +554,9 @@ def get_models ():
     x = Dense(512, kernel_initializer='he_normal', bias_initializer='zeros', activation='relu')(inp_2)
 
     x = Dense(256, kernel_initializer='he_normal', bias_initializer='zeros', activation='relu')(x)
-
+    
+    # remove if 'with own deck'
+    
     x_deck = deck_net(inp_2)
     x_deck = Flatten()(x_deck)
 
