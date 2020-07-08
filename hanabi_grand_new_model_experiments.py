@@ -385,6 +385,10 @@ def sample_board_state (probs, stack, discarded):
     # this method might result in overall unlikely board states
     # sampling cards independently is not the same as sampling board states
     # but might do well enough for now
+    
+    # edit: in hindsight, this might be okay because the inter-card dependencies
+    # should be represented implicitly in the NN
+  
 
     n_available = np.zeros((N_SUITS*5,))
 
