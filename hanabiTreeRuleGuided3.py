@@ -44,7 +44,7 @@ x = Dense(128, kernel_initializer='he_normal', bias_initializer='zeros', activat
 out = Dense(48, kernel_initializer='zeros', bias_initializer='zeros', activation='linear')(x)
 
 q_net = Model(inputs=[inp_1, inp_2], outputs=out)
-q_net.load_weights("/Users/florianfroehlich/Desktop/HANABINEWEST/paperspaceDownloads/oldqd_nomp_final.h5")
+q_net.load_weights("/oldqd_nomp_final.h5")
 
 W = K.batch_get_value(getattr(q_net, 'weights'))
 
