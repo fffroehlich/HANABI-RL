@@ -382,10 +382,6 @@ all_cards = list(product(range(N_SUITS), (1, 1, 1, 2, 2, 3, 3, 4, 4, 5)))
 
 #################################################################################################################################
 
-# mini-rsa
-# only own deck?
-# look ahead w simple probabilistic agent
-
 # # random
 # def rollout (action, player, decks, stack, discarded, n_inf_tokens, n_fuse_tokens, final_round, moves_left, max_steps):
 #
